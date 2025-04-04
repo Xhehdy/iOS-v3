@@ -41,12 +41,9 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
              
          }
          if (textField == debitCardView.cardNumberTextField){
-             if let count = textField.text?.count {
-                 if count == 6{
-                    flutterwaveCardClient.amount = self.amount
-                     flutterwaveCardClient.cardfirst6 = textField.text
-                    
-                 }
+             if let text = textField.text, text.count == 6 {
+                 flutterwaveCardClient.amount = self.amount
+                 flutterwaveCardClient.cardfirst6 = text
              }
          }
      }
