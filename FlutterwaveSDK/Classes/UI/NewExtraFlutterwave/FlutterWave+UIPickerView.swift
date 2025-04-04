@@ -30,7 +30,6 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
              }
              
              if let text = textField.text {
-                 
                  for (index, _) in text.prefix(pinViewContainer.pins.count).enumerated() {
                      pinViewContainer.pins[index].backgroundColor = .gray
                  }
@@ -38,8 +37,8 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
                      textField.resignFirstResponder()
                  }
              }
-             
          }
+        
          if (textField == debitCardView.cardNumberTextField){
              if let text = textField.text, text.count == 6 {
                  flutterwaveCardClient.amount = self.amount
