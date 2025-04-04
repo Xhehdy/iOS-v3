@@ -29,11 +29,14 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
                  item.backgroundColor = .white
              }
              
-             for (index,_) in (textField.text?.enumerated())!{
-                 pinViewContainer.pins[index].backgroundColor = .gray
-             }
-             if ((textField.text?.count)! == 4){
-                 textField.resignFirstResponder()
+             if let pinText = textField.text {
+                 
+                 for (index,_) in (textField.text?.enumerated())!{
+                     pinViewContainer.pins[index].backgroundColor = .gray
+                 }
+                 if ((textField.text?.count)! == 4){
+                     textField.resignFirstResponder()
+                 }
              }
              
          }
