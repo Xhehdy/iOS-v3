@@ -32,11 +32,6 @@ jobs:
       - name: Run Coverage Scan
         run: slather coverage -s --scheme FlutterwaveSDK_Example FlutterwaveSDK.xcodeproj
 
-      - name: Upload Coverage Report
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-
       - name: Update Podspec Version
         run: |
           # Update the version in your podspec
