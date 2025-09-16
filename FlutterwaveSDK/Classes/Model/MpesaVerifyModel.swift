@@ -24,6 +24,7 @@ struct MpesaVerifyResponse: Codable {
 
 // MARK: - MpesaVerifyData
 struct MpesaVerifyData: Codable {
+    let id: Int?
     let txRef, flwRef: String?
     let amount, chargedAmount: Double?
     let appFee: Double?
@@ -34,6 +35,7 @@ struct MpesaVerifyData: Codable {
     let customer: Customer?
 
     enum CodingKeys: String, CodingKey {
+        case id
         case txRef = "tx_ref"
         case flwRef = "flw_ref"
         case amount
@@ -48,7 +50,7 @@ struct MpesaVerifyData: Codable {
 
 extension MpesaVerifyData{
     func toFlutterResponse() -> FlutterwaveDataResponse{
-        return FlutterwaveDataResponse(txRef: txRef, flwRef: flwRef, deviceFingerprint: nil, amount: amount, chargedAmount: chargedAmount, appFee: appFee, merchantFee: merchantFee, processorResponse: processorResponse, authModel: nil, currency: currency, ip: ip, narration: narration, status: status, authURL:nil, paymentType: nil, fraudStatus: nil, chargeType: nil, createdAt: nil, plan: nil, id: nil, accountID: nil, customer: customer, card: nil)
+        return FlutterwaveDataResponse(txRef: txRef, flwRef: flwRef, deviceFingerprint: nil, amount: amount, chargedAmount: chargedAmount, appFee: appFee, merchantFee: merchantFee, processorResponse: processorResponse, authModel: nil, currency: currency, ip: ip, narration: narration, status: status, authURL:nil, paymentType: nil, fraudStatus: nil, chargeType: nil, createdAt: nil, plan: nil, id: id, accountID: nil, customer: customer, card: nil)
     }
 }
 
