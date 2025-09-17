@@ -723,7 +723,6 @@ public class FlutterwavePayViewController: BaseViewController {
         debitCardView.rememberCardView.rememberCardCheck.addTarget(self, action: #selector(toggleSaveCardCheck), for: .touchUpInside)
         debitCardView.rememberCardView.rememberCardText.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(toggleSaveCardCheck)))
         debitCardView.rememberCardView.rememberCardText.isUserInteractionEnabled = true
-        print("Allow Save card State: \(!FlutterwaveConfig.sharedConfig().allowSaveCard)")
         debitCardView.rememberCardView.isHidden = !FlutterwaveConfig.sharedConfig().allowSaveCard
         
         saveCardTableController = SaveCardViewController()
