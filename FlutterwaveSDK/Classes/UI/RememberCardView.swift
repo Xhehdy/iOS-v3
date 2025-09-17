@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RememberCardView : UIView{
     
@@ -29,7 +30,6 @@ class RememberCardView : UIView{
         super.init(frame: frame)
         
         addSubview(rememberCardCheck)
-        
         addSubview(rememberCardText)
         
         
@@ -38,8 +38,8 @@ class RememberCardView : UIView{
     
     func setupConstriant(){
         NSLayoutConstraint.activate([
-            rememberCardCheck.topAnchor.constraint(equalTo: topAnchor, constant:18),
-            rememberCardCheck.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 13),
+            rememberCardCheck.topAnchor.constraint(equalTo: topAnchor),
+            rememberCardCheck.leadingAnchor.constraint(equalTo: leadingAnchor),
             rememberCardCheck.heightAnchor.constraint(equalToConstant: 32),
             rememberCardCheck.widthAnchor.constraint(equalToConstant: 39),
             
