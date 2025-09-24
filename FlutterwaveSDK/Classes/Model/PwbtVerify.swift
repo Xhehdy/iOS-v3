@@ -24,6 +24,7 @@ struct PwbtVerifyResponse: Codable {
 
 // MARK: - PwbtVerifyData
 struct PwbtVerifyData: Codable {
+    let id: Int?
     let txRef, flwRef: String?
     let amount: Double?
     let chargedAmount, appFee: Double?
@@ -35,6 +36,7 @@ struct PwbtVerifyData: Codable {
     let customer: Customer?
 
     enum CodingKeys: String, CodingKey {
+        case id
         case txRef = "tx_ref"
         case flwRef = "flw_ref"
         case amount
@@ -52,7 +54,7 @@ struct PwbtVerifyData: Codable {
 
 extension PwbtVerifyData {
     func toFlutterResponse() -> FlutterwaveDataResponse{
-        return FlutterwaveDataResponse(txRef: txRef, flwRef: flwRef, deviceFingerprint: nil, amount: amount, chargedAmount: chargedAmount, appFee: appFee, merchantFee: merchantFee, processorResponse: processorResponse, authModel: authModel, currency: currency, ip: ip, narration: narration, status: status, authURL: nil, paymentType: paymentType, fraudStatus: nil, chargeType: nil, createdAt: nil, plan: nil, id: nil, accountID: nil, customer: customer, card: nil)
+        return FlutterwaveDataResponse(txRef: txRef, flwRef: flwRef, deviceFingerprint: nil, amount: amount, chargedAmount: chargedAmount, appFee: appFee, merchantFee: merchantFee, processorResponse: processorResponse, authModel: authModel, currency: currency, ip: ip, narration: narration, status: status, authURL: nil, paymentType: paymentType, fraudStatus: nil, chargeType: nil, createdAt: nil, plan: nil, id: id, accountID: nil, customer: customer, card: nil)
     }
 }
 

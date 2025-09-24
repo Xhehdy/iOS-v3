@@ -719,9 +719,11 @@ public class FlutterwavePayViewController: BaseViewController {
         debitCardView.cardPayButton.setTitle("PAY \(self.amount?.toCountryCurrency(code: FlutterwaveConfig.sharedConfig().currencyCode) ?? "")", for: .normal)
         
         saveCardContainer.useAnotherCardButton.addTarget(self, action: #selector(showDebitCardView), for: .touchUpInside)
-        debitCardView.rememberCardCheck.addTarget(self, action: #selector(toggleSaveCardCheck), for: .touchUpInside)
-        debitCardView.rememberCardText.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(toggleSaveCardCheck)))
-        debitCardView.rememberCardText.isUserInteractionEnabled = true
+        
+        debitCardView.rememberCardView.rememberCardCheck.addTarget(self, action: #selector(toggleSaveCardCheck), for: .touchUpInside)
+        debitCardView.rememberCardView.rememberCardText.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(toggleSaveCardCheck)))
+        debitCardView.rememberCardView.rememberCardText.isUserInteractionEnabled = true
+        debitCardView.rememberCardView.isHidden = !FlutterwaveConfig.sharedConfig().allowSaveCard
         
         saveCardTableController = SaveCardViewController()
         saveCardTableController.delegate = self
@@ -1184,7 +1186,7 @@ public class FlutterwavePayViewController: BaseViewController {
     @objc func toggleSaveCardCheck(){
         flutterwaveCardClient.saveCard =  !flutterwaveCardClient.saveCard
         let image =  flutterwaveCardClient.saveCard == true ? UIImage(named:"rave_check_box",in: Bundle.getResourcesBundle(), compatibleWith: nil) :  UIImage(named:"rave_unchecked_box",in: Bundle.getResourcesBundle(), compatibleWith: nil)
-        debitCardView.rememberCardCheck.setImage(image, for: .normal)
+        debitCardView.rememberCardView.rememberCardCheck.setImage(image, for: .normal)
     }
     
     // MARK: - Table view data source
