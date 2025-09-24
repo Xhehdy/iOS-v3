@@ -29,21 +29,20 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
                  item.backgroundColor = .white
              }
              
-             for (index,_) in (textField.text?.enumerated())!{
-                 pinViewContainer.pins[index].backgroundColor = .gray
-             }
-             if ((textField.text?.count)! == 4){
-                 textField.resignFirstResponder()
-             }
-             
-         }
-         if (textField == debitCardView.cardNumberTextField){
-             if let count = textField.text?.count {
-                 if count == 6{
-                    flutterwaveCardClient.amount = self.amount
-                     flutterwaveCardClient.cardfirst6 = textField.text
-                    
+             if let text = textField.text {
+                 for (index, _) in text.prefix(pinViewContainer.pins.count).enumerated() {
+                     pinViewContainer.pins[index].backgroundColor = .gray
                  }
+                 if text.count == pinViewContainer.pins.count {
+                     textField.resignFirstResponder()
+                 }
+             }
+         }
+        
+         if (textField == debitCardView.cardNumberTextField){
+             if let text = textField.text, text.count == 6 {
+                 flutterwaveCardClient.amount = self.amount
+                 flutterwaveCardClient.cardfirst6 = text
              }
          }
      }

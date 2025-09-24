@@ -116,23 +116,12 @@ class DebitCardViewNew: UIView {
     }()
     
     
-    
-    
-    
-    lazy var rememberCardCheck: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "rave_check_box",in: Bundle.getResourcesBundle(), compatibleWith: nil), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    lazy var rememberCardView: RememberCardView = {
+        let view = RememberCardView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
-    lazy var rememberCardText: UILabel = {
-        let label = UILabel()
-        label.text = "Remember this card next time"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(hex: "#4A4A4A")
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        return label
-    }()
+    
     lazy var cardPayButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("PAY", for: .normal)
@@ -163,8 +152,7 @@ class DebitCardViewNew: UIView {
         addSubview(cardNumberTextField)
         addSubview(cardExpiry)
         addSubview(cardCVV)
-        addSubview(rememberCardCheck)
-        addSubview(rememberCardText)
+        addSubview(rememberCardView)
         addSubview(cardPayButton)
         
         
@@ -195,21 +183,18 @@ class DebitCardViewNew: UIView {
             cardCVV.heightAnchor.constraint(equalToConstant: 50),
            
             
-            rememberCardCheck.topAnchor.constraint(equalTo: cardExpiry.bottomAnchor, constant:18),
-            rememberCardCheck.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 13),
-            rememberCardCheck.heightAnchor.constraint(equalToConstant: 32),
-            rememberCardCheck.widthAnchor.constraint(equalToConstant: 39),
-            
-            
-            rememberCardText.leadingAnchor.constraint(equalTo: rememberCardCheck.trailingAnchor, constant: 6),
-            rememberCardText.centerYAnchor.constraint(equalTo: rememberCardCheck.centerYAnchor),
+            rememberCardView.topAnchor.constraint(equalTo: cardCVV.bottomAnchor, constant:18),
+            rememberCardView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 13),
+            rememberCardView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            rememberCardView.bottomAnchor.constraint(equalTo: cardPayButton.topAnchor, constant: -6),
+            rememberCardView.heightAnchor.constraint(equalToConstant: 50),
             
             cardPayButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             cardPayButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            cardPayButton.topAnchor.constraint(equalTo: rememberCardCheck.bottomAnchor, constant: 20),
+            cardPayButton.topAnchor.constraint(equalTo: rememberCardView.bottomAnchor, constant: 20),
             cardPayButton.heightAnchor.constraint(equalToConstant: 50),
             
-            rememberCardText.bottomAnchor.constraint(equalTo: cardPayButton.topAnchor, constant: -6)
+            rememberCardView.bottomAnchor.constraint(equalTo: cardPayButton.topAnchor, constant: -6)
         ])
     }
     required init?(coder aDecoder: NSCoder) {

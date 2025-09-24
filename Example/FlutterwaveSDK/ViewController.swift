@@ -47,6 +47,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
         config.publicKey = "[PUB_KEY]" //Public key
         config.encryptionKey = "[ENCRYPTION_KEY]" //Encryption key
         config.isPreAuth = false  // This should be set to true for preauthoize card transactions
+        config.allowSaveCard = true // flag to hide/show save card feature
         let controller = FlutterwavePayViewController()
         let nav = UINavigationController(rootViewController: controller)
         controller.amount = "[Amount]" // This is the amount to be charged.
