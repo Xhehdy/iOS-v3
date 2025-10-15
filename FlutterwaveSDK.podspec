@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
     s.public_header_files = 'Classes/*.h'
     
     s.frameworks = 'UIKit'
-    s.dependency 'lottie-ios'. '4.5.2'
+    s.dependency 'lottie-ios', '4.5.2'
     s.dependency 'RxSwift'
     s.dependency 'RxCocoa'
     s.dependency 'SwinjectAutoregistration'
