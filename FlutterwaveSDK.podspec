@@ -35,7 +35,6 @@ Pod::Spec.new do |s|
     s.resources =  'FlutterwaveSDK/**/*.{xcassets,json,png}'
    
     s.public_header_files = 'Classes/*.h'
-    s.dependency 'lottie-ios'
     s.frameworks = 'UIKit'
     s.dependency 'RxSwift'
     s.dependency 'RxCocoa'
